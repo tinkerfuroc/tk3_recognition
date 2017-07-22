@@ -17,4 +17,5 @@ sensor_msgs/Image face_image
 #type   name
 int32 face_amount
 int32[] face_gender
+int32[] face_age
 geometry_msgs/Polygon[] face_pos   # just diagonal

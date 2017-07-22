@@ -3,7 +3,7 @@
 # File Name : node_person_recognition.py
 # Purpose :
 # Creation Date : 21-07-2017
-# Last Modified : Sat 22 Jul 2017 02:59:02 PM
+# Last Modified : Sat 22 Jul 2017 05:00:11 PM
 # Created By : Jeasine Ma [jeasinema[at]gmail[dot]com]
 
 from __future__ import print_function
@@ -61,6 +61,7 @@ def detect_face(img):
     # handle parsed
     face_info = {
             "gender" : 0, # 0 for male
+            "age" : 0,
             "pos" : [  # pos for diagonal
                 (0, 0),
                 (0, 0)
@@ -69,6 +70,7 @@ def detect_face(img):
     try:
         for face in parsed:
             face_info['gender'] = 0 if face['faceAttributes']['gender'] == 'male' else 1
+            face_info['age'] = face['faceAttributes']['age']
             face_info['pos'] = [
                     (face['faceRectangle']['left'], face['faceRectangle']['top']),
                     (face['faceRectangle']['left'] + face['faceRectangle']['width'], 
@@ -86,6 +88,7 @@ def handle_face_recog(req):
 
     for info in detect_face(img):
         ret.face_gender.append(info['gender'])
+        ret.face_age.append(info['age'])
         pos = Polygon()
         pos.points.append(Point32(info['pos'][0][0], info['pos'][0][1], 0))
         pos.points.append(Point32(info['pos'][1][0], info['pos'][1][1], 0))
