@@ -1,0 +1,20 @@
+#############################
+# available type for ros_srv:
+#  bool 
+#  int8, int16, int32, int64 (plus uint*)
+#  float32, float64
+#  string1
+#  time, duration
+#  other msg files (e.g. sensor_msgs/LaserScan)
+#  variable-length array[] and fixed-length array[C]
+#############################
+#request
+#type   name
+sensor_msgs/Image face_image
+
+---
+#response 
+#type   name
+int32 face_amount
+int32[] face_gender
+geometry_msgs/Polygon[] face_pos   # just diagonal

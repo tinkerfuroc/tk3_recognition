@@ -1,0 +1,4 @@
+<launch>
+    <node name="tk3_person_recog" pkg="tk3_recognition" type="node_person_recognition.py" respawn="true" />
+    <node name='tk3_voice_recog' pkg="tk3_recognition" type="node_voice_recognition.py" respawn="true" />
+</launch>
